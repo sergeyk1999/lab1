@@ -27,7 +27,7 @@ void RLS::peleng()
 				else az = atan((i->GetY() - y_) / (i->GetX() - x_)) + M_PI;
 				if (i->GetVelocity() > 0) i->Print(name_,time_,D,az );
 			}
-			i->Move(delta_,time_);
+			if (i->GetVelocity() > 0) i->Move(delta_,time_);
 			 
 		}
 	time_ += delta_;

@@ -15,6 +15,7 @@ void Plane::Move(double delta,double time)
 	x_ += velocity_ * cos(course_) * delta;
 	y_ += velocity_ * sin(course_) * delta;
 	velocity_ -= f3(velocity_, time);
+	if (velocity_ <= 0) velocity_ = 0;
 }
 void Plane::Print(const char* name,double time, double D, double az)
 {
@@ -51,6 +52,7 @@ void Missle::Move(double delta,double time)
 	x_ += (velocity_ + acceleration_ * delta / 2) * cos(course_) * delta;
 	y_ += (velocity_ + acceleration_ * delta / 2) * sin(course_) * delta;
 	velocity_ += acceleration_ * delta-f3(velocity_,time);
+	if (velocity_ <= 0) velocity_ = 0;
 }
 void Missle::Print(const char* name, double time,double D,double az)
 {
