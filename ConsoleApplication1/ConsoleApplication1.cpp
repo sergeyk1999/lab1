@@ -13,6 +13,7 @@ int main(void)
 	double x, y, acceleration, velocity, course,rad,time_max,delta;
 	FILE* fp;
 	fp = fopen(name, "w");
+	//fprintf(fp, "type x_coord y_coord velocity course accel time\n");
 	fclose(fp);
 	vector <TAircraft*> list;
 	printf("enter number of planes and missles\n");
@@ -34,6 +35,7 @@ int main(void)
 		cout << "enter velocity, course, acceleration, x and y for plane\n";
 		cin >> velocity >> course >> acceleration >> x >> y;
 		Missle* missle = new Missle();
+		course = deg_rad(course);
 		missle->SetVelocity(velocity);
 		missle->SetCourse(course);
 		missle->SetX(x);
@@ -49,9 +51,12 @@ int main(void)
 	rls->SetRad(rad);
 	rls->SetX(x);
 	rls->SetY(y);
-	rls->SetTimeMax(time_max);
+	rls->SetTime(0);
 	rls->SetList(list);
-	rls->peleng();
+	while (rls->GetTime() <= time_max)
+	{
+		rls->peleng();
+	}
 	for (auto i : list)
 	{
 		delete i;

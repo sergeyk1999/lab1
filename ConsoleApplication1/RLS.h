@@ -8,7 +8,8 @@ class RLS
 private:
 	double x_;
 	double y_;
-	double time_max_;
+	double time_;
+	//double time_max_;
 	double delta_;
 	double rad_;
 	const char* name_;
@@ -20,10 +21,12 @@ public:
 	void SetFileName(const char* name);
 	void SetX(double x);
 	void SetY(double y);
+	void SetTime(double time) { time_ = time; }
+	double GetTime() { return time_; }
 	double GetX();
 	double GetY();
 	void SetRad(double rad);
-	void SetTimeMax(double time_max);
+	//void SetTimeMax(double time_max);
 	void SetDelta(double delta);
 	void SetList(vector<TAircraft*> list) { list_ = list; }
 };

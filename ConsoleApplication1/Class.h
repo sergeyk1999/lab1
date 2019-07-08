@@ -15,7 +15,7 @@ public:
 	virtual double GetX() = 0;
 	virtual void SetY(double y) = 0;
 	virtual double GetY() = 0;
-	virtual void Move(double time) = 0;
+	virtual void Move(double delta,double time) = 0;
 	virtual void Print(const char *name,double time,double D,double az) = 0;
 };
 
@@ -30,8 +30,9 @@ public:
 	virtual double GetX() override;
 	virtual void SetY(double y) override;
 	virtual double GetY() override;
-	virtual void Move(double time) override;
+	virtual void Move(double delta,double time) override;
 	virtual void Print(const char *name,double time,double D,double az) override;
+	virtual double f3(double v,double time);
 	Plane() = default;
 	~Plane() = default;
 	//typeoftarget type = a;
@@ -55,7 +56,8 @@ public:
 	virtual double GetY() override;
 	virtual void SetAcceleration(double acceleration);
 	virtual double GetAcceleration();
-	virtual void Move(double time) override;
+	virtual void Move(double delta,double time) override;
+	virtual double f3(double v, double time);
 	virtual void Print(const char* name,double time,double D,double az) override;
 	Missle() = default;
 	~Missle() = default;

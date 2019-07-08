@@ -7,9 +7,7 @@
 void RLS::SetFileName(const char* name) { name_ = name; }
 void RLS::peleng()
 {
-	double time,D,az;
-	for (time = 0; time < time_max_; time += delta_)
-	{
+	double D,az;
 		for (auto i : list_)
 		{
 			D = sqrt((x_ - i->GetX()) * (x_ - i->GetX()) + (y_ - i->GetY()) * (y_ - i->GetY()));
@@ -27,11 +25,12 @@ void RLS::peleng()
 				}
 				else if (i->GetX() > x_) az = atan((i->GetY() - y_) / (i->GetX() - x_));
 				else az = atan((i->GetY() - y_) / (i->GetX() - x_)) + M_PI;
-				i->Print(name_,time,D,az );
+				if (i->GetVelocity() > 0) i->Print(name_,time_,D,az );
 			}
-			i->Move(delta_);
+			i->Move(delta_,time_);
+			 
 		}
-	}
+	time_ += delta_;
 }
 void RLS::SetX(double x) { x_ = x; }
 double RLS::GetX() { return x_; }
@@ -39,4 +38,4 @@ void RLS::SetY(double y) { y_ = y; }
 double RLS::GetY() { return y_; }
 void RLS::SetDelta(double delta) { delta_ = delta; }
 void RLS::SetRad(double rad) { rad_ = rad; }
-void RLS::SetTimeMax(double time_max) { time_max_ = time_max; }
+//void RLS::SetTimeMax(double time_max) { time_max_ = time_max; }
