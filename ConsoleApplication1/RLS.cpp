@@ -25,8 +25,8 @@ void RLS::peleng()
 					if (i->GetX() >= x_) az = 0;
 					else az = M_PI;
 				}
-				else if (i->GetX() > x_) az = atan((i->GetY() - y_) / (i->GetX() - x_));
-				else az = atan((i->GetY() - y_) / (i->GetX() - x_)) + M_PI;
+				else if (i->GetX() > x_) {az = atan((i->GetY() - y_) / (i->GetX() - x_));}
+				else {az = atan((i->GetY() - y_) / (i->GetX() - x_)) + M_PI;}
 				for (auto j : attack_list_)
 				{
 					if (j->GetNum() == i->GetNum())
@@ -50,15 +50,15 @@ void RLS::peleng()
 							i->SetVelocity(0);
 							j->SetVelocity(0);
 						}
-						if (i->GetVelocity() == 0) j->SetVelocity(0);
+						if (i->GetVelocity() == 0) {j->SetVelocity(0);}
 						j->DefineCourse(i);
-						if(j->GetVelocity()>eps) j->Print(name_, time_, 0, 0);
+						if(j->GetVelocity()>eps) {j->Print(name_, time_, 0, 0);}
 						j->Move(delta_,time_);
 					}
 				}
-				if (i->GetVelocity() > eps) i->Print(name_,time_,D,az );
+				if (i->GetVelocity() > eps) {i->Print(name_,time_,D,az );}
 			}
-			if (i->GetVelocity() > eps) i->Move(delta_,time_);
+			if (i->GetVelocity() > eps) {i->Move(delta_,time_);}
 			buf = 0;
 		}
 	time_ += delta_;
