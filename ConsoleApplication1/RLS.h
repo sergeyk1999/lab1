@@ -14,6 +14,7 @@ private:
 	double rad_;
 	const char* name_;
 	vector<TAircraft*> list_;
+	vector<AD_Missle*> attack_list_;
 public:
 	~RLS() = default;
 	void peleng();
@@ -29,5 +30,6 @@ public:
 	//void SetTimeMax(double time_max);
 	void SetDelta(double delta);
 	void SetList(vector<TAircraft*> list) { list_ = list; }
+	void PrintRes(int i);
 };
 

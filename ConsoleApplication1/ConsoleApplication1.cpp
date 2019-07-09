@@ -28,6 +28,7 @@ int main(void)
 		plane->SetCourse(course);
 		plane->SetX(x);
 		plane->SetY(y);
+		plane->SetNum(k);
 		list.push_back(plane);
 	}
 	for (k = 0; k < j; k++)
@@ -41,6 +42,7 @@ int main(void)
 		missle->SetX(x);
 		missle->SetY(y);
 		missle->SetAcceleration(acceleration);
+		missle->SetNum(i + k);
 		list.push_back(missle);
 	}
 	cout << "enter x, y, rad, time_max and delta for RLS\n";
